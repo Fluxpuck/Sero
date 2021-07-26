@@ -9,7 +9,7 @@ Sero a Discord bot, providing useful train information for the Dutch Railways.
 * getTravelInformations
 
 ## Commands
-| commandName | commandCategory | Description |
+| commandName | commandCategory | commandDescription |
 | ------------- | ------------- | ------------- |
 | reisplanner | trein | Plan a train trip |
 | storingen | trein | Get actual disruptions |
