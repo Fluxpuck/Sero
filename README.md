@@ -14,7 +14,7 @@ Sero a Discord bot, providing useful train information for the Dutch Railways.
 | reisplanner | trein | Plan a train trip |
 | storingen | trein | Get actual disruptions |
 | vertrek | trein | Get departures from a train station |
-| werkzaamheden | Get actual and planned disruptions due work |
+| werkzaamheden | trein | Get actual and planned disruptions due work |
 | help | misc | Information about the commands | 
 | ping | misc | Check client and Discord latency |
 | setup | setup | Setup the bot and it's commands |
