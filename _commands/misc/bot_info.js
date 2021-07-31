@@ -21,6 +21,7 @@ module.exports.info = {
     alias: ['botinfo', 'seroinfo'],
     usage: '[prefix]bot',
     desc: 'Get status information about the Sero',
+    options: []
 }
 
 //command permission groups

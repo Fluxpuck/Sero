@@ -1,6 +1,7 @@
 //construct Sero utilities
 const ClientManager = require('../utils/ClientManager');
 const DataManager = require('../utils/DataManager');
+const CommandManager = require('../utils/CommandManager');
 const { logCommandTable } = require('../utils/ConsoleManager');
 
 //construct packages and set path to command directory
@@ -26,6 +27,12 @@ module.exports = async (client) => {
     await ClientManager.getSeroCommands(commandFolder, { dealerFunction: fileLoader })
     logCommandTable(client.commands) //log all commands to console.table
     console.log(` > Loaded ${Array.from(client.commands.keys()).length} command${Array.from(client.commands.keys()).length > 1 ? 's' : ''} successfully.`)
+
+    //get and create all slash commands based on the category options
+    const commandsByGroup = await CommandManager.CommandsbyGroup(client)
+    const options = new Map().set('train') //set categorie options
+    const slashCommandData = await CommandManager.getSlashCommandData(client, commandsByGroup, options)
+    await CommandManager.createSlashCommand(client, slashCommandData)
 
     //check all Databases per Guild
     await Array.from(client.guilds.cache.values()).forEach(async guild => {

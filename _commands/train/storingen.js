@@ -68,7 +68,8 @@ module.exports.info = {
     category: 'train',
     alias: ['storing', 'verstoring'],
     usage: '[prefix]storingen',
-    desc: 'Commando om actuele storingen op te halen',
+    desc: 'Bekijk de actuele verstoringen',
+    options: []
 }
 
 //command permission groups

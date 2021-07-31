@@ -1,8 +1,9 @@
 //require DiscordJS
 const { MessageEmbed } = require('discord.js');
-
+//requite utilities
+const { getMessages } = require('../utils/CollectionManager');
 //require embed structures
-const { failure_emote } = require('../config/embed.json')
+const { failure_emote } = require('../config/embed.json');
 
 /*------------------------------*/
 
@@ -18,7 +19,7 @@ module.exports = {
      */
     async InteractiveTextModule(message, message_embed, bot_message, time) {
         //fetch response
-        let messages = await Resolver.getMessages(1, time, message).catch(e => {
+        let messages = await getMessages(1, time, message).catch(e => {
             //update message embed
             message_embed.fields = []
             message_embed.setThumbnail()

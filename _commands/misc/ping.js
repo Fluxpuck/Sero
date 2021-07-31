@@ -21,6 +21,7 @@ module.exports.info = {
     alias: ['latency'],
     usage: '[prefix]ping',
     desc: 'Check bot and Discord latency',
+    options: []
 }
 
 //command permission groups

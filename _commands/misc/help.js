@@ -2,6 +2,7 @@
 const { MessageEmbed } = require('discord.js');
 
 //require embed structures
+const { CommandsbyGroup } = require('../../utils/CommandManager');
 const { capitalize } = require('../../utils/functions');
 
 /*------------------------------*/
@@ -16,16 +17,8 @@ module.exports.run = async (client, message, arguments, prefix, permissions) => 
         .setColor('#f6bf21')
         .setFooter(`Sero | Made by Fluxpuck#0001`)
 
-    //filter/sort all elements based on category
-    const commandsByGroup = client.commands.reduce((key, value) => {
-        // Group initialization
-        if (!key[value.info.category]) {
-            key[value.info.category] = [];
-        }
-        // Grouping
-        key[value.info.category].push(value);
-        return key;
-    }, {});
+    //filter/sort all commands based on category
+    const commandsByGroup = await CommandsbyGroup(client)
 
     //if no arguments, send general Help message
     if (arguments.length < 1) {
@@ -89,7 +82,6 @@ ${commandsByGroup[category].map(c => c.info.name).join('\n')}
     }
 }
 
-
 //command information
 module.exports.info = {
     name: 'help',
@@ -97,6 +89,7 @@ module.exports.info = {
     alias: [],
     usage: '[prefix]help',
     desc: 'Get more information related to all the available commands',
+    options: []
 }
 
 //command permission groups

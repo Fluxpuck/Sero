@@ -205,7 +205,13 @@ module.exports.info = {
     category: 'train',
     alias: ['departure', 'station'],
     usage: '[prefix]vertrek',
-    desc: 'Commando om NS vertrektijden per stations op te halen',
+    desc: 'Bekijk de vertrektijden per station',
+    options: [{
+        name: 'station',
+        type: 'STRING',
+        description: 'Het station waarvan je de vertrektijden wilt.',
+        required: true,
+    }]
 }
 
 //command permission groups

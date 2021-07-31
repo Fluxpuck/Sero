@@ -16,8 +16,6 @@ const { storing_emote, werk_emote } = require('../../config/embed.json');
 //construct the command and export
 module.exports.run = async (client, message, arguments, prefix, permissions) => {
 
-    console.log(arguments)
-
     //if no arguments, return error message
     if (arguments.length < 1) return ErrorMessage(message, 'Er is geen vertrek- en aankomst station ingegeven.', 6000)
 
@@ -189,7 +187,19 @@ module.exports.info = {
     category: 'train',
     alias: ['plan', 'trip'],
     usage: '[prefix]reisplanner [station] > [station]',
-    desc: 'Commando om NS treinreizen te plannen',
+    desc: 'Plan een treinreis van A naar B',
+    options: [{
+        name: 'vertrek',
+        type: 'STRING',
+        description: 'Het station waarvan je wilt vertrekken.',
+        required: true,
+    },
+    {
+        name: 'aankomst',
+        type: 'STRING',
+        description: 'Het station war je wilt aankomen.',
+        required: true,
+    }]
 }
 
 //command permission groups

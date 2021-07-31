@@ -180,7 +180,8 @@ module.exports.info = {
     category: 'train',
     alias: ['werk'],
     usage: '[prefix]werkzaamheden',
-    desc: 'Commando om de actuele werkzaamheden op te halen',
+    desc: 'Bekijk de actuele of geplande werkzaamheden',
+    options: []
 }
 
 //command permission groups

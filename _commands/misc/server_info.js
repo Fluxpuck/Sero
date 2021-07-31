@@ -21,6 +21,7 @@ module.exports.info = {
     alias: ['serverinfo'],
     usage: '[prefix]server',
     desc: 'Get information about the server',
+    options: []
 }
 
 //command permission groups
