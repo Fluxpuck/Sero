@@ -1,8 +1,7 @@
-//require ownerIDs from configuration file
-const { ownerIDs } = require('../config/config.json')
 //construct utilities
 const GuildManager = require('../utils/GuildManager');
 const Resolver = require('../utils/Resolver');
+//require packages
 const wait = require('util').promisify(setTimeout);
 
 //exports event
@@ -16,6 +15,7 @@ module.exports = async (client, interaction) => {
     const { commandName, commandId } = interaction
     const input = interaction.options
 
+    //create message arguments
     let messageArgs = []
     for (const [key, value] of input.entries()) {
         messageArgs.push(value.value)
@@ -38,13 +38,18 @@ module.exports = async (client, interaction) => {
         //check if user has permission to use the command
         if (permissionCheck = true) await interaction.reply(commandFile.info.reply);
 
+        //if the user has no permission to use the command, deny access
         if (permissionCheck == false) {
             await interaction.reply('You do not have permission to use this command!');
             await wait(4000)
             await interaction.deleteReply();
         }
 
-        if (permissionCheck == true) await commandFile.run(client, message, messageArgs.join('>'), prefix, permissions);
+        //if the user has access, run the command and delete reply
+        if (permissionCheck == true) {
+            await commandFile.run(client, message, messageArgs.join('>'), prefix, permissions);
+            await interaction.deleteReply();
+        }
 
     }
 }
