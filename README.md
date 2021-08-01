@@ -23,7 +23,8 @@ Sero a Discord bot, providing useful train information for the Dutch Railways.
 ## Release
 Sero is being developed on DiscordJS-v13@dev (this is a development-preview version).
 Currently waiting for DiscordJS to officially release the stable version of v13. 
-*More information later!*
+
+For more information on the development, check the todo inventory on my [agenda](https://github.com/Fluxpuck/Sero/blob/sero-v4/discordJS-v13/Agenda.md).
 
 ## Contributors
 Created with ❤ by **Fluxpuck**
