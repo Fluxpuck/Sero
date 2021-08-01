@@ -180,6 +180,7 @@ module.exports.info = {
     category: 'train',
     alias: ['werk'],
     usage: '[prefix]werkzaamheden',
+    reply: 'Hier volgen de werkzaamheden.',
     desc: 'Bekijk de actuele of geplande werkzaamheden',
     options: []
 }

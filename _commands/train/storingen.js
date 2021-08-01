@@ -52,9 +52,7 @@ module.exports.run = async (client, message, arguments, prefix, permissions) => 
         )
     }
 
-    console.log(disruptionMessage)
-
-    //send message
+    //send message to the user
     message.channel.send({
         embeds: [disruptionMessage]
     })
@@ -68,6 +66,7 @@ module.exports.info = {
     category: 'train',
     alias: ['storing', 'verstoring'],
     usage: '[prefix]storingen',
+    reply: 'Hier volgen de actuele storingen.',
     desc: 'Bekijk de actuele verstoringen',
     options: []
 }

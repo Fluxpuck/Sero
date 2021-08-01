@@ -32,19 +32,19 @@ const getSlashCommandData = async (client, commandsByGroup, options) => {
     return data
 }
 
-const createSlashCommand = async (client, slashCommandData) => {
+const createGuildSlashCommand = async (client, slashCommandData, guild) => {
     await client.application?.fetch() //fetch current command information
     slashCommandData.forEach(command => {
         client.application.commands.create({
             name: command.name,
             description: command.description,
             options: command.options
-        })
+        }, guild.id)
     });
 }
 
 module.exports = {
     CommandsbyGroup,
     getSlashCommandData,
-    createSlashCommand
+    createGuildSlashCommand
 };

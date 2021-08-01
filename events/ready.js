@@ -32,7 +32,9 @@ module.exports = async (client) => {
     const commandsByGroup = await CommandManager.CommandsbyGroup(client)
     const options = new Map().set('train') //set categorie options
     const slashCommandData = await CommandManager.getSlashCommandData(client, commandsByGroup, options)
-    await CommandManager.createSlashCommand(client, slashCommandData)
+    await Array.from(client.guilds.cache.values()).forEach(async guild => { //setup application commands per guild
+        await CommandManager.createGuildSlashCommand(client, slashCommandData, guild) //update/create guild command
+    })
 
     //check all Databases per Guild
     await Array.from(client.guilds.cache.values()).forEach(async guild => {

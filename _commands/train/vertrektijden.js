@@ -205,6 +205,7 @@ module.exports.info = {
     category: 'train',
     alias: ['departure', 'station'],
     usage: '[prefix]vertrek',
+    reply: 'Hier volgen de vertrektijden.',
     desc: 'Bekijk de vertrektijden per station',
     options: [{
         name: 'station',

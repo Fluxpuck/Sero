@@ -1,5 +1,5 @@
 //require defaultPrefix from configuration file
-const { defaultPrefix } = require('../config/config.json')
+const { defaultPrefix, ownerIDs } = require('../config/config.json')
 //setup database connection
 const database = require('../config/database');
 
@@ -32,18 +32,40 @@ const getGuildCommandPermissions = async (guild, commandName) => {
     })
 }
 
+const checkGuildCommandPermissions = async (guild, member, channelId, permissions) => {
+    //check if permission array is present
+    if (permissions === false) return { status: false, error: 'Permission Error', message: 'No permissions were recieved' }
 
+    //construct elements
+    let permission_array = []
+    const role_array = permissions.role_access.split(',')
+    const chnl_array = permissions.chnl_access.split(',')
 
+    /**
+     * Go over all the available permissions
+     */
+    role_array.forEach(role => { //check if member has the permissioned role(s)
+        if (member.roles.cache.has(role) == false) permission_array.push(false)
+    });
+    chnl_array.forEach(channelID => { //check if the command is eligible to be used in the channel
+        if (channelId != channelID) permission_array.push(false)
+    });
 
+    /*  check if the refuse array does not have any false permissions
+        and if the message author is bot owner  */
+    if (!permission_array.includes(false) ||
+        ownerIDs.includes(member.id) ||
+        member.permissions.has("ADMINISTRATOR")) {
+        return true
+    } else return false
 
-
-
-
+}
 
 /*------------------------------*/
 
 //export all functions
 module.exports = {
     getGuildPrefix,
-    getGuildCommandPermissions
+    getGuildCommandPermissions,
+    checkGuildCommandPermissions
 }

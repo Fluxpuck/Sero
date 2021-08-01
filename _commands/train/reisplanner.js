@@ -187,6 +187,7 @@ module.exports.info = {
     category: 'train',
     alias: ['plan', 'trip'],
     usage: '[prefix]reisplanner [station] > [station]',
+    reply: 'Hier volgt de reisplanning.',
     desc: 'Plan een treinreis van A naar B',
     options: [{
         name: 'vertrek',

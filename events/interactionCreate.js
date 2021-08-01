@@ -1,27 +1,50 @@
+//require ownerIDs from configuration file
+const { ownerIDs } = require('../config/config.json')
+//construct utilities
+const GuildManager = require('../utils/GuildManager');
+const Resolver = require('../utils/Resolver');
+const wait = require('util').promisify(setTimeout);
+
 //exports event
 module.exports = async (client, interaction) => {
 
     //check if interaction is application command
-    if (interaction.type === 'APPLICATION_COMMAND') {
+    if (!interaction.isCommand()) return;
 
-        //filter the interaction input
-        const { channelId, guildId, user, guild } = interaction
-        const { commandName, commandId } = interaction
-        const input = interaction.options
+    //filter the interaction input
+    const { channelId, guildId, user, guild } = interaction
+    const { commandName, commandId } = interaction
+    const input = interaction.options
 
-        //get Guild Prefix
-        const prefix = await GuildManager.getGuildPrefix(guild);
+    let messageArgs = []
+    for (const [key, value] of input.entries()) {
+        messageArgs.push(value.value)
+    }
 
+    //get command detauls
+    const prefix = await GuildManager.getGuildPrefix(guild); //get Guild Prefix
+    const member = await Resolver.getUser(guild, user.id); //get Member details
+    const channel = await Resolver.getChannels(guild, channelId, 'all');
+    const message = { channel: channel[0], author: member, slashinteraction: true }
 
-        // console.log(channelId, guildId)
-        // console.log(commandName, commandId)
+    //get the client command
+    const commandFile = client.commands.get(commandName)
+    if (commandFile) {
 
-        // console.log(user)
-        // console.log(guild)
+        //get Command Permissions for this Guild
+        const permissions = await GuildManager.getGuildCommandPermissions(guild, commandFile.info.name)
+        let permissionCheck = await GuildManager.checkGuildCommandPermissions(guild, member, channelId, permissions)
 
-        // console.log(input)
+        //check if user has permission to use the command
+        if (permissionCheck = true) await interaction.reply(commandFile.info.reply);
 
+        if (permissionCheck == false) {
+            await interaction.reply('You do not have permission to use this command!');
+            await wait(4000)
+            await interaction.deleteReply();
+        }
 
+        if (permissionCheck == true) await commandFile.run(client, message, messageArgs.join('>'), prefix, permissions);
 
     }
 }

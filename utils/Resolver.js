@@ -131,12 +131,7 @@ const getUser = async (guild, input) => {
 }
 
 module.exports = {
-    getMessages,
-    getUserMessages,
     getChannels,
     getRoles,
-    getUser,
-    getCommand,
-    findCommand,
-    inputType
+    getUser
 }
