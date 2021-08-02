@@ -17,8 +17,11 @@ Sero a Discord bot, providing useful train information for the Dutch Railways.
 | werkzaamheden | trein | Get actual and planned disruptions due work |
 | help | misc | Information about the commands | 
 | ping | misc | Check client and Discord latency |
-| setup | setup | Setup the bot and it's commands |
+| info | misc | Information about the bot |
+| invite | misc | Get the bot inventation through DM |
 | prefix | setup | Change bot prefix |
+| permission | setup | Setup permissions to a command |
+| block | setup | Block an member from using a command |
 
 ## Release
 Sero is being developed on DiscordJS-v13@dev (this is a development-preview version).
