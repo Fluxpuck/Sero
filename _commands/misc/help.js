@@ -13,7 +13,7 @@ module.exports.run = async (client, message, arguments, prefix, permissions) => 
     //setup the embedded message
     const helpMessage = new MessageEmbed()
         .setTitle('Sero - Algemene Help')
-        .setThumbnail('https://cdn.discordapp.com/emojis/644829999043444749.png')
+        .setThumbnail('https://cdn.discordapp.com/emojis/605943682734096394.png')
         .setColor('#f6bf21')
         .setFooter(`Sero | Made by Fluxpuck#0001`)
 
@@ -71,7 +71,7 @@ ${commandsByGroup[category].map(c => c.info.name).join('\n')}
             },
             {
                 name: `Aliassen`,
-                value: `\`\`\`${commandInfo.alias.join(', ')}\`\`\``,
+                value: `\`\`\`${commandInfo.alias.length > 0 ? commandInfo.alias.join(', ') : "None"}\`\`\``,
                 inline: true
             },
         )

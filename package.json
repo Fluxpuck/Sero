@@ -1,6 +1,6 @@
 {
   "name": "serobot",
-  "version": "4.0.0",
+  "version": "4.0.0-alpha",
   "description": "Discord bot for train information in the Netherlands",
   "main": "main.js",
   "dependencies": {

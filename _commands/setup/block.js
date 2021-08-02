@@ -1,4 +1,3 @@
-//does not need any requirements or utilities
 
 /*------------------------------*/
 
@@ -7,25 +6,19 @@ module.exports.run = async (client, message, arguments, prefix, permissions) => 
 
 
 
-    console.log(permissions)
-
-
-
 }
-
 
 //command information
 module.exports.info = {
-    name: 'server',
-    category: 'misc',
-    alias: ['serverinfo'],
-    usage: '[prefix]server',
-    desc: 'Get information about the server',
+    name: 'block',
+    category: 'setup',
+    alias: [],
+    usage: '[prefix]block [user]',
+    desc: 'Block an user form using a command',
     options: []
 }
 
 //command permission groups
 module.exports.permissions = [
-    "MANAGE_GUILD",
-    "VIEW_GUILD_INSIGHTS"
+    "ADMINISTRATOR"
 ]

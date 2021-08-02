@@ -205,5 +205,6 @@ module.exports.info = {
 
 //command permission groups
 module.exports.permissions = [
-    "ADMINISTRATOR"
+    "VIEW_CHANNEL",
+    "SEND_MESSAGES"
 ]

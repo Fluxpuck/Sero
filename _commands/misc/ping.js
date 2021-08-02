@@ -6,9 +6,8 @@
 module.exports.run = async (client, message, arguments, prefix, permissions) => {
 
     //return Sero- and Discord Latency
-    return message.channel.send('Pinging...').then(async (msg) => {
-        msg.delete()
-        message.channel.send(`Sero ${msg.createdTimestamp - message.createdTimestamp}ms\nDiscord ${Math.round(client.ws.ping)}ms`);
+    return message.reply('Pinging...').then(async (msg) => {
+        msg.edit(`${client.user.username} ${msg.createdTimestamp - message.createdTimestamp}ms\nDiscord ${Math.round(client.ws.ping)}ms`);
     })
 
 }
