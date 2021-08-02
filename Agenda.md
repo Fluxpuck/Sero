@@ -9,4 +9,4 @@
 | 4 | Open | block | Add a check for blocked users before executing a (interaction) command |
 | 5 | In progress | info | Create an informative embedded message with all the required information about Sero |
 | 6 | Open | trein | Add command to get specific information about a train through the NS Virtual Train API |
-| 7 | Open | - | Make it so permissions for commands also work on slash commands, including the blocked users |
+| 7 | Open | Slash Commands | Make it so permissions for commands also work on slash commands, including the blocked users |
