@@ -17,7 +17,7 @@ module.exports.run = async (client, message, arguments, prefix, permissions) => 
     //setup the embedded message
     const embedMessage = new MessageEmbed()
         .setTitle(`${client.user.username}`)
-        .setDescription(`Thank you for your interest in ${client.user.username}! Invite the bot by clicking this [inventation](${inventation})`)
+        .setDescription(`Thank you for your interest in ${client.user.username}! Invite the bot by clicking this [inventation](${inventation}).`)
         .addFields(
             { name: `Support Server`, value: `For support, join my [Support server](https://discord.gg/WcwNtAA)`, inline: true },
             { name: `Github Page`, value: `Checkout my [Github page](https://github.com/Fluxpuck)`, inline: true }
@@ -28,6 +28,7 @@ module.exports.run = async (client, message, arguments, prefix, permissions) => 
 
     //send embedded message to user through DM
     member.send({ embeds: [embedMessage] })
+    message.delete();
 
 }
 

@@ -13,7 +13,7 @@ module.exports = async (client, interaction) => {
     //filter the interaction input
     const { channelId, guildId, user, guild } = interaction
     const { commandName, commandId } = interaction
-    const input = interaction.options
+    const input = interaction.options._hoistedOptions
 
     //create message arguments
     let messageArgs = []
@@ -50,6 +50,5 @@ module.exports = async (client, interaction) => {
             await commandFile.run(client, message, messageArgs.join('>'), prefix, permissions);
             await interaction.deleteReply();
         }
-
     }
 }

@@ -47,12 +47,9 @@ module.exports = {
      * @param {String} timer Timeout
      */
     async ErrorMessage(message, input, timer) {
-
-        console.log(timer)
-
         //create error embed
         let ErrorEmbed = new MessageEmbed()
-            .setDescription(`❗ ${input}`)
+            .setDescription(`${embed.failure_emote} ${input}`)
             .setColor(embed.color)
         //check if a remove timer is set!
         if (timer) { //if timer is set return error message and remove
@@ -60,6 +57,19 @@ module.exports = {
         } else { //if no timer is set, just return error message
             return message.channel.send({ embeds: [ErrorEmbed] })
         }
+    },
+
+    /**
+     * Create and send generalized Error message.
+     * @param {String} input Error message input
+     */
+    async InteractionError(input) {
+        //create error embed
+        let ErrorEmbed = new MessageEmbed()
+            .setDescription(`${embed.failure_emote} ${input}`)
+            .setColor(embed.color)
+
+        return ErrorEmbed
     },
 
     /**

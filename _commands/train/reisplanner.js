@@ -8,7 +8,7 @@ const { MessageEmbed, MessageButton,
 const fs = require('fs');
 
 //require embed structures
-const { ErrorMessage, capitalize } = require('../../utils/functions');
+const { InteractionError, ErrorMessage, capitalize } = require('../../utils/functions');
 const { storing_emote, werk_emote } = require('../../config/embed.json');
 
 /*------------------------------*/
@@ -133,11 +133,17 @@ module.exports.run = async (client, message, arguments, prefix, permissions) => 
     });
 
     //create filter and button collector
-    const filter = (i) => i.user.id == message.author.id
-    let collector = new InteractionCollector(client, { message: msg, filter: filter, time: 12000, componentType: "BUTTON" })
+    // const filter = (i) => i.user.id == message.author.id
+    // let collector = new InteractionCollector(client, { message: msg, filter: filter, time: 120000, componentType: "BUTTON" })
+    let collector = new InteractionCollector(client, { message: msg, time: 120000, componentType: "BUTTON" })
 
     //collect button interactions
     collector.on('collect', async (button) => {
+
+        //filter members with no access
+        if (button.user.id != message.author.id) return button.reply({ ephemeral: true, embeds: [InteractionError(`Only the command executor can interact with this command.`)] })
+
+        //update defer
         await button.deferUpdate();
 
         //add or retract page

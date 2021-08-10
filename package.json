@@ -4,7 +4,7 @@
   "description": "Discord bot for train information in the Netherlands",
   "main": "main.js",
   "dependencies": {
-    "discord.js": "^13.0.0-dev.2e078e4.1625529824",
+    "discord.js": "^13.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "moment": "^2.27.0",
